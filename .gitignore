@@ -1,0 +1,17 @@
+node_modules/
+backups/
+update-drop/
+server-core/
+*.log
+.DS_Store
+Thumbs.db
+/dist/
+/public/build/
+manager-config.json
+manager-data/
+pack-drop/
+.env
+.env.*
+.cursor/
+/public/assets/
+test/*.js

@@ -1,0 +1,23 @@
+{
+  "port": 8080,
+  "paths": {
+    "serverCore": "./server-core",
+    "backups": "./backups",
+    "updateDrop": "./update-drop",
+    "packDrop": "./pack-drop",
+    "managerData": "./manager-data"
+  },
+  "server": {
+    "executable": "bedrock_server.exe",
+    "stopCommand": "stop",
+    "gracefulTimeoutMs": 30000,
+    "forceKillTimeoutMs": 10000
+  },
+  "protected": [
+    "worlds/",
+    "server.properties",
+    "permissions.json",
+    "allowlist.json",
+    "valid_known_packs.json"
+  ]
+}

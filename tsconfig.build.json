@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*", "server.ts", "shared/**/*", "adm-zip.d.ts"],
+  "exclude": ["public", "test", "node_modules", "dist"]
+}

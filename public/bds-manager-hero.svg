@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Bedrock Server Manager hero image</title>
+  <desc id="desc">Dark neon dashboard illustration with a Minecraft-inspired server stack, update arrows, and status panels.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220" />
+      <stop offset="55%" stop-color="#111b2d" />
+      <stop offset="100%" stop-color="#081018" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#18253a" />
+      <stop offset="100%" stop-color="#101826" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7d36a" />
+      <stop offset="100%" stop-color="#d79f24" />
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7ef0ff" />
+      <stop offset="100%" stop-color="#27c4d6" />
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#78c857" />
+      <stop offset="100%" stop-color="#3f7f39" />
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="b" />
+      <feColorMatrix in="b" type="matrix" values="1 0 0 0 0  0 1 0 0 0.15  0 0 1 0 0.2  0 0 0 0.75 0" />
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)" />
+
+  <g opacity="0.22" stroke="#8fb7ff" stroke-width="1">
+    <path d="M0 120H1600" />
+    <path d="M0 240H1600" />
+    <path d="M0 360H1600" />
+    <path d="M0 480H1600" />
+    <path d="M0 600H1600" />
+    <path d="M0 720H1600" />
+    <path d="M160 0V900" />
+    <path d="M320 0V900" />
+    <path d="M480 0V900" />
+    <path d="M640 0V900" />
+    <path d="M800 0V900" />
+    <path d="M960 0V900" />
+    <path d="M1120 0V900" />
+    <path d="M1280 0V900" />
+    <path d="M1440 0V900" />
+  </g>
+
+  <g opacity="0.35">
+    <circle cx="1260" cy="130" r="190" fill="#173356" filter="url(#soft)" />
+    <circle cx="260" cy="760" r="220" fill="#173356" filter="url(#soft)" />
+  </g>
+
+  <g transform="translate(120 120)">
+    <rect x="0" y="0" width="530" height="220" rx="22" fill="url(#panel)" stroke="#274059" stroke-width="2" />
+    <rect x="26" y="26" width="170" height="20" rx="10" fill="url(#gold)" opacity="0.95" />
+    <text x="26" y="84" fill="#dce6f4" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700">BDS MANAGER</text>
+    <text x="26" y="128" fill="#8fa2bf" font-family="JetBrains Mono, monospace" font-size="18">Bedrock Dedicated Server update control</text>
+    <g transform="translate(26 150)">
+      <rect x="0" y="0" width="118" height="38" rx="10" fill="#142131" stroke="#2d425b" />
+      <circle cx="22" cy="19" r="6" fill="#41d37f" />
+      <text x="40" y="25" fill="#e9f2ff" font-family="JetBrains Mono, monospace" font-size="16">RUNNING</text>
+    </g>
+    <g transform="translate(160 150)">
+      <rect x="0" y="0" width="150" height="38" rx="10" fill="#142131" stroke="#2d425b" />
+      <circle cx="22" cy="19" r="6" fill="#7ef0ff" />
+      <text x="40" y="25" fill="#e9f2ff" font-family="JetBrains Mono, monospace" font-size="16">SAFE UPDATE</text>
+    </g>
+    <g transform="translate(328 150)">
+      <rect x="0" y="0" width="176" height="38" rx="10" fill="#142131" stroke="#2d425b" />
+      <circle cx="22" cy="19" r="6" fill="#f7d36a" />
+      <text x="40" y="25" fill="#e9f2ff" font-family="JetBrains Mono, monospace" font-size="16">BACKUPS ENABLED</text>
+    </g>
+  </g>
+
+  <g transform="translate(910 150)">
+    <rect x="0" y="0" width="460" height="620" rx="28" fill="url(#panel)" stroke="#2a4561" stroke-width="2" />
+    <rect x="28" y="28" width="132" height="18" rx="9" fill="url(#cyan)" opacity="0.9" />
+    <text x="28" y="82" fill="#dce6f4" font-family="JetBrains Mono, monospace" font-size="28" font-weight="700">STATUS</text>
+    <g transform="translate(28 116)">
+      <rect x="0" y="0" width="404" height="92" rx="18" fill="#0f1724" stroke="#2a4561" />
+      <text x="22" y="34" fill="#8fa2bf" font-family="JetBrains Mono, monospace" font-size="15">SYSTEM</text>
+      <text x="22" y="65" fill="#f4fbff" font-family="JetBrains Mono, monospace" font-size="24" font-weight="700">Bedrock server online</text>
+      <circle cx="362" cy="46" r="18" fill="#1f3c2d" />
+      <circle cx="362" cy="46" r="8" fill="#41d37f" filter="url(#glow)" />
+    </g>
+    <g transform="translate(28 228)">
+      <rect x="0" y="0" width="404" height="92" rx="18" fill="#0f1724" stroke="#2a4561" />
+      <text x="22" y="34" fill="#8fa2bf" font-family="JetBrains Mono, monospace" font-size="15">PIPELINE</text>
+      <text x="22" y="65" fill="#f4fbff" font-family="JetBrains Mono, monospace" font-size="24" font-weight="700">Snapshot, patch, restart</text>
+      <path d="M320 56h54" stroke="url(#gold)" stroke-width="5" stroke-linecap="round" />
+      <path d="M360 40l22 16-22 16" fill="none" stroke="url(#gold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g transform="translate(28 340)">
+      <rect x="0" y="0" width="404" height="92" rx="18" fill="#0f1724" stroke="#2a4561" />
+      <text x="22" y="34" fill="#8fa2bf" font-family="JetBrains Mono, monospace" font-size="15">INTEGRITY</text>
+      <text x="22" y="65" fill="#f4fbff" font-family="JetBrains Mono, monospace" font-size="24" font-weight="700">Worlds and players preserved</text>
+      <path d="M358 34l26 26-26 26-26-26z" fill="#7ef0ff" opacity="0.18" />
+      <path d="M358 42l18 18-18 18-18-18z" fill="#7ef0ff" opacity="0.95" />
+    </g>
+    <g transform="translate(28 452)">
+      <rect x="0" y="0" width="404" height="120" rx="18" fill="#0f1724" stroke="#2a4561" />
+      <text x="22" y="34" fill="#8fa2bf" font-family="JetBrains Mono, monospace" font-size="15">COMMANDS</text>
+      <g transform="translate(22 52)">
+        <rect x="0" y="0" width="360" height="22" rx="11" fill="#152133" />
+        <rect x="0" y="0" width="238" height="22" rx="11" fill="url(#cyan)" opacity="0.85" />
+      </g>
+      <g transform="translate(22 84)">
+        <rect x="0" y="0" width="300" height="14" rx="7" fill="#152133" />
+        <rect x="0" y="0" width="188" height="14" rx="7" fill="url(#gold)" opacity="0.85" />
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(150 430)">
+    <path d="M0 220L250 90L520 220L250 350Z" fill="#121d2d" stroke="#2f4764" stroke-width="2" />
+    <path d="M74 198L250 110L436 198L250 286Z" fill="#0d1724" stroke="#35516f" stroke-width="2" />
+    <g transform="translate(158 142)">
+      <rect x="0" y="0" width="184" height="184" rx="18" fill="#162131" stroke="#35516f" />
+      <rect x="16" y="16" width="152" height="152" rx="14" fill="#253247" />
+      <rect x="16" y="16" width="152" height="48" rx="14" fill="url(#grass)" />
+      <rect x="16" y="64" width="152" height="104" rx="0" fill="#7b6045" />
+      <g opacity="0.2">
+        <path d="M16 88h152M16 112h152M16 136h152" stroke="#b58d63" />
+        <path d="M40 64v104M80 64v104M120 64v104" stroke="#b58d63" />
+      </g>
+    </g>
+    <g transform="translate(340 126)">
+      <rect x="0" y="0" width="132" height="132" rx="16" fill="#172233" stroke="#35516f" />
+      <rect x="14" y="14" width="104" height="22" rx="11" fill="#f7d36a" opacity="0.95" />
+      <rect x="14" y="48" width="104" height="16" rx="8" fill="#26c4d7" opacity="0.95" />
+      <rect x="14" y="76" width="72" height="16" rx="8" fill="#6b7f9c" opacity="0.95" />
+      <path d="M34 106h64" stroke="#41d37f" stroke-width="8" stroke-linecap="round" />
+    </g>
+    <g transform="translate(56 120)">
+      <rect x="0" y="0" width="118" height="118" rx="16" fill="#172233" stroke="#35516f" />
+      <path d="M20 88L88 20" stroke="url(#gold)" stroke-width="10" stroke-linecap="round" />
+      <path d="M54 20h34v34" fill="none" stroke="url(#cyan)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <g opacity="0.8">
+    <path d="M770 610c90-60 178-58 280 6" fill="none" stroke="url(#cyan)" stroke-width="6" stroke-linecap="round" stroke-dasharray="1 18" />
+    <circle cx="1084" cy="630" r="10" fill="#7ef0ff" filter="url(#glow)" />
+  </g>
+</svg>
