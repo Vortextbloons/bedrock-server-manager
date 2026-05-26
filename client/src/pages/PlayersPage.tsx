@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { Users, Save, AlertTriangle } from 'lucide-react'
+import { Users, Save, AlertTriangle, Shield, FolderOpen, History } from 'lucide-react'
+import { PlayerActionsPanel } from '@/components/server/PlayerActionsPanel'
 import { toast } from 'sonner'
 import { api } from '@/lib/api'
 import { useServerStatus } from '@/hooks/useServerStatus'
@@ -90,18 +91,20 @@ export function PlayersPage() {
       <Tabs defaultValue="roster">
         <TabsList>
           <TabsTrigger value="roster" className="gap-2">
-            <Users className="h-4 w-4" /> Online Roster
+            <Users className="h-4 w-4" /> Roster
           </TabsTrigger>
-          <TabsTrigger value="files">Files</TabsTrigger>
-          <TabsTrigger value="banlist">Ban List</TabsTrigger>
-          <TabsTrigger value="tempbans">Temp Bans</TabsTrigger>
-          <TabsTrigger value="whitelist">Whitelist</TabsTrigger>
-          <TabsTrigger value="notes">Notes</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
-          <TabsTrigger value="templates">Templates</TabsTrigger>
+          <TabsTrigger value="access" className="gap-2">
+            <Shield className="h-4 w-4" /> Access
+          </TabsTrigger>
+          <TabsTrigger value="files" className="gap-2">
+            <FolderOpen className="h-4 w-4" /> Files
+          </TabsTrigger>
+          <TabsTrigger value="records" className="gap-2">
+            <History className="h-4 w-4" /> Records
+          </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="roster" className="mt-4">
+        <TabsContent value="roster" className="mt-4 space-y-6">
           <Card>
             <CardContent className="p-0">
               {isLoading ? (
@@ -141,34 +144,46 @@ export function PlayersPage() {
               )}
             </CardContent>
           </Card>
+          <PlayerActionsPanel running={running} />
         </TabsContent>
 
-        <TabsContent value="files" className="mt-4">
+        <TabsContent value="access" className="mt-4">
+          <Tabs defaultValue="banlist">
+            <TabsList>
+              <TabsTrigger value="banlist">Ban List</TabsTrigger>
+              <TabsTrigger value="tempbans">Temp Bans</TabsTrigger>
+              <TabsTrigger value="whitelist">Whitelist</TabsTrigger>
+            </TabsList>
+            <TabsContent value="banlist" className="mt-4">
+              <BanListTab running={running} />
+            </TabsContent>
+            <TabsContent value="tempbans" className="mt-4">
+              <TempBansTab running={running} />
+            </TabsContent>
+            <TabsContent value="whitelist" className="mt-4">
+              <WhitelistTab running={running} />
+            </TabsContent>
+          </Tabs>
+        </TabsContent>
+
+        <TabsContent value="files" className="mt-4 space-y-6">
           <PlayerFiles />
-        </TabsContent>
-
-        <TabsContent value="banlist" className="mt-4">
-          <BanListTab running={running} />
-        </TabsContent>
-
-        <TabsContent value="tempbans" className="mt-4">
-          <TempBansTab running={running} />
-        </TabsContent>
-
-        <TabsContent value="whitelist" className="mt-4">
-          <WhitelistTab running={running} />
-        </TabsContent>
-
-        <TabsContent value="notes" className="mt-4">
-          <PlayerNotesTab />
-        </TabsContent>
-
-        <TabsContent value="history" className="mt-4">
-          <HistoryTab />
-        </TabsContent>
-
-        <TabsContent value="templates" className="mt-4">
           <TemplatesTab running={running} />
+        </TabsContent>
+
+        <TabsContent value="records" className="mt-4">
+          <Tabs defaultValue="notes">
+            <TabsList>
+              <TabsTrigger value="notes">Notes</TabsTrigger>
+              <TabsTrigger value="history">History</TabsTrigger>
+            </TabsList>
+            <TabsContent value="notes" className="mt-4">
+              <PlayerNotesTab />
+            </TabsContent>
+            <TabsContent value="history" className="mt-4">
+              <HistoryTab />
+            </TabsContent>
+          </Tabs>
         </TabsContent>
       </Tabs>
     </div>

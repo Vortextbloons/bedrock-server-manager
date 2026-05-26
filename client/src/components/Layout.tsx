@@ -2,33 +2,28 @@ import { NavLink, Outlet } from 'react-router-dom';
 import {
   LayoutDashboard,
   Server,
-  Upload,
-  Archive,
+  Wrench,
   Settings,
-  FileText,
   Users,
   Package,
   Globe,
-  Activity,
-  Zap,
+  Sliders,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '@/lib/api';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { APP_VERSION } from '@shared/app-version';
+
 
 const nav = [
-  { to: '/', label: 'Overview', icon: LayoutDashboard },
+  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/server', label: 'Server', icon: Server },
-  { to: '/updates', label: 'Updates', icon: Upload },
-  { to: '/backups', label: 'Backups', icon: Archive },
+  { to: '/maintenance', label: 'Maintenance', icon: Wrench },
   { to: '/worlds', label: 'Worlds', icon: Globe },
-  { to: '/properties', label: 'Properties', icon: FileText },
   { to: '/players', label: 'Players', icon: Users },
+  { to: '/config', label: 'Configuration', icon: Sliders },
   { to: '/packs', label: 'Packs', icon: Package },
-  { to: '/actions', label: 'Live Tools', icon: Zap },
-  { to: '/system', label: 'System', icon: Activity },
   { to: '/settings', label: 'Settings', icon: Settings },
 ];
 
@@ -55,7 +50,7 @@ export function Layout() {
           <h1 className="text-sm font-bold tracking-wider text-primary">
             BDS<span className="text-accent">_</span>MANAGER
           </h1>
-          <p className="mt-1 text-xs text-muted-foreground">v1.0.0</p>
+          <p className="mt-1 text-xs text-muted-foreground">v{APP_VERSION}</p>
         </div>
         <nav className="flex flex-1 flex-col gap-1 p-2">
           {nav.map(({ to, label, icon: Icon }) => (
@@ -78,9 +73,6 @@ export function Layout() {
           ))}
         </nav>
         <div className="border-t border-border p-3 text-xs text-muted-foreground">
-          <div className="mb-2 flex justify-center">
-            <ThemeToggle />
-          </div>
           <Separator className="mb-2" />
           <p>Dashboard :{info?.port ?? (window.location.port || '8080')}</p>
           <p className="mt-1 truncate" title={info?.serverCore}>

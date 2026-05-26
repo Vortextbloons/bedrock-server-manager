@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import type { BackupInfo } from '@shared/pipeline';
 
-export function BackupsPage() {
+export function BackupsSection() {
   const { log } = useEventLog();
   const queryClient = useQueryClient();
   const [busy, setBusy] = useState(false);
@@ -80,11 +80,7 @@ export function BackupsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-xl font-semibold text-primary">Backups</h2>
-          <p className="text-sm text-muted-foreground">World and config archives</p>
-        </div>
+      <div className="flex items-center justify-end">
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={() => refetch()}>
             Refresh
@@ -168,4 +164,9 @@ export function BackupsPage() {
       </Card>
     </div>
   );
+}
+
+/** @deprecated Use MaintenancePage */
+export function BackupsPage() {
+  return <BackupsSection />;
 }

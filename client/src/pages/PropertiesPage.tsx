@@ -14,7 +14,7 @@ import type { PropertiesGetResponse, EditablePropertyKey } from '@shared/propert
 
 const BOOL_KEYS = new Set(['online-mode', 'allow-cheats']);
 
-export function PropertiesPage() {
+export function PropertiesEditor() {
   const { data: status } = useServerStatus();
   const { log } = useEventLog();
   const [values, setValues] = useState<Record<string, string>>({});
@@ -61,14 +61,9 @@ export function PropertiesPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-xl font-semibold text-primary">server.properties</h2>
-        <p className="text-sm text-muted-foreground">
-          {serverRunning
-            ? 'Stop the server to edit properties.'
-            : 'Edit common Bedrock server settings'}
-        </p>
-      </div>
+      {serverRunning && (
+        <p className="text-sm text-amber-300">Stop the server to edit server.properties.</p>
+      )}
 
       <Card>
         <CardHeader>
@@ -109,4 +104,9 @@ export function PropertiesPage() {
       </Button>
     </div>
   );
+}
+
+/** @deprecated Use ConfigurationPage */
+export function PropertiesPage() {
+  return <PropertiesEditor />;
 }

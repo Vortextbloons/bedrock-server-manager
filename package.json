@@ -4,7 +4,13 @@
   "license": "MIT",
   "private": true,
   "description": "Manual-trigger Bedrock Dedicated Server update manager with local web dashboard",
-  "keywords": ["minecraft", "bedrock", "bds", "server-manager", "dashboard"],
+  "keywords": [
+    "minecraft",
+    "bedrock",
+    "bds",
+    "server-manager",
+    "dashboard"
+  ],
   "repository": {
     "type": "git",
     "url": "github.com/Vortexstbloons/bedrock-server-manager"
@@ -24,6 +30,7 @@
     "dev": "tsx watch server.ts",
     "dev:client": "vite --config client/vite.config.ts",
     "typecheck": "tsc -p tsconfig.build.json --noEmit && tsc -p client/tsconfig.json --noEmit",
+    "version:bump": "node scripts/update-version.mjs",
     "test": "tsx --test"
   },
   "dependencies": {

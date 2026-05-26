@@ -8,8 +8,8 @@ import { useServerStatus } from '@/hooks/useServerStatus';
 import { useEventLog } from '@/context/EventLogContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { Label } from '@/components/ui/label';
 import { EventLog } from '@/components/EventLog';
 import type {
   PipelineStepEvent,
@@ -17,7 +17,7 @@ import type {
   PipelineErrorEvent,
 } from '@shared/pipeline';
 
-export function UpdatesPage() {
+export function UpdatePipelineSection() {
   const { data: status } = useServerStatus();
   const { log, clear } = useEventLog();
   const queryClient = useQueryClient();
@@ -133,84 +133,86 @@ export function UpdatesPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-xl font-semibold text-primary">Update Pipeline</h2>
-        <p className="text-sm text-muted-foreground">Upload or drop a BDS update zip</p>
-      </div>
-
       <Card>
         <CardHeader>
-          <CardTitle>Source</CardTitle>
+          <CardTitle>Update source</CardTitle>
+          <CardDescription>Upload a zip or use files in update-drop/</CardDescription>
         </CardHeader>
-        <CardContent>
-          <Tabs value={source} onValueChange={(v) => setSource(v as 'upload' | 'drop')}>
-            <TabsList>
-              <TabsTrigger value="upload">Upload Zip</TabsTrigger>
-              <TabsTrigger value="drop">Drop Folder</TabsTrigger>
-            </TabsList>
-            <TabsContent value="upload">
-              <div
-                className={`mt-4 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-10 transition-colors ${
-                  dragOver ? 'border-accent bg-accent/10' : 'border-border hover:border-accent/50'
-                }`}
-                onClick={() => fileRef.current?.click()}
-                onDragOver={(e) => {
-                  e.preventDefault();
-                  setDragOver(true);
-                }}
-                onDragLeave={() => setDragOver(false)}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  setDragOver(false);
-                  const f = e.dataTransfer.files[0];
+        <CardContent className="space-y-6">
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant={source === 'upload' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setSource('upload')}
+            >
+              Upload zip
+            </Button>
+            <Button
+              variant={source === 'drop' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setSource('drop')}
+            >
+              Drop folder
+            </Button>
+          </div>
+
+          {source === 'upload' ? (
+            <div
+              className={`flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed p-10 transition-colors ${
+                dragOver ? 'border-accent bg-accent/10' : 'border-border hover:border-accent/50'
+              }`}
+              onClick={() => fileRef.current?.click()}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOver(true);
+              }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={(e) => {
+                e.preventDefault();
+                setDragOver(false);
+                const f = e.dataTransfer.files[0];
+                if (f) handleFile(f);
+              }}
+            >
+              <Upload className="mb-2 h-8 w-8 text-muted-foreground" />
+              <p className="text-sm text-muted-foreground">Drop .zip here or click to browse</p>
+              {uploadMeta && <p className="mt-2 text-sm text-primary">{uploadMeta}</p>}
+              <input
+                ref={fileRef}
+                type="file"
+                accept=".zip"
+                className="hidden"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
                   if (f) handleFile(f);
                 }}
-              >
-                <Upload className="mb-2 h-8 w-8 text-muted-foreground" />
-                <p className="text-sm text-muted-foreground">Drop .zip here or click to browse</p>
-                {uploadMeta && <p className="mt-2 text-sm text-primary">{uploadMeta}</p>}
-                <input
-                  ref={fileRef}
-                  type="file"
-                  accept=".zip"
-                  className="hidden"
-                  onChange={(e) => {
-                    const f = e.target.files?.[0];
-                    if (f) handleFile(f);
-                  }}
-                />
+              />
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <Label className="text-muted-foreground">Files in update-drop/</Label>
+                <Button variant="outline" size="sm" onClick={() => scanDrop()} className="gap-1">
+                  <RefreshCw className="h-3 w-3" /> Rescan
+                </Button>
               </div>
-            </TabsContent>
-            <TabsContent value="drop">
-              <div className="mt-4 space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Files in update-drop/</span>
-                  <Button variant="outline" size="sm" onClick={() => scanDrop()} className="gap-1">
-                    <RefreshCw className="h-3 w-3" /> Rescan
-                  </Button>
-                </div>
-                <div className="rounded-md border border-border p-3 text-sm">
-                  {dropData?.files.length === 0 && (
-                    <p className="text-muted-foreground">No .zip files found in update-drop/</p>
-                  )}
-                  {dropData?.files.map((f) => (
-                    <div key={f.name} className="flex justify-between py-1">
-                      <span>{f.name}</span>
-                      <span className="text-muted-foreground">{formatSize(f.size)}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="rounded-md border border-border p-3 text-sm">
+                {dropData?.files.length === 0 && (
+                  <p className="text-muted-foreground">No .zip files found in update-drop/</p>
+                )}
+                {dropData?.files.map((f) => (
+                  <div key={f.name} className="flex justify-between py-1">
+                    <span>{f.name}</span>
+                    <span className="text-muted-foreground">{formatSize(f.size)}</span>
+                  </div>
+                ))}
               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          )}
 
-          {pipeline && <Progress value={progress} className="mt-4" />}
+          {pipeline && <Progress value={progress} />}
 
-          <Button
-            className="mt-4 w-full gap-2 sm:w-auto"
-            disabled={!canUpdate}
-            onClick={executeUpdate}
-          >
+          <Button className="gap-2" disabled={!canUpdate} onClick={executeUpdate}>
             <Star className="h-4 w-4" />
             {pipeline ? 'Updating...' : 'Execute Update'}
           </Button>
@@ -227,4 +229,9 @@ export function UpdatesPage() {
       </Card>
     </div>
   );
+}
+
+/** @deprecated Use MaintenancePage */
+export function UpdatesPage() {
+  return <UpdatePipelineSection />;
 }

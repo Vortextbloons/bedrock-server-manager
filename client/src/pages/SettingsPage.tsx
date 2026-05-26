@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Save, AlertTriangle, Moon, Sun } from 'lucide-react';
+import { Save, AlertTriangle } from 'lucide-react';
 import { toast } from 'sonner';
 import { api } from '@/lib/api';
 import { useEventLog } from '@/context/EventLogContext';
-import { useTheme } from '@/context/ThemeContext';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,7 +14,7 @@ import type { ManagerConfig } from '@shared/config';
 
 export function SettingsPage() {
   const { log } = useEventLog();
-  const { theme, toggle } = useTheme();
+
   const [config, setConfig] = useState<ManagerConfig | null>(null);
   const [protectedText, setProtectedText] = useState('');
   const [requiresRestart, setRequiresRestart] = useState(false);
@@ -160,21 +160,6 @@ export function SettingsPage() {
               value={config.server.forceKillTimeoutMs}
               onChange={(e) => patchServer('forceKillTimeoutMs', parseInt(e.target.value, 10))}
             />
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Appearance</CardTitle>
-          <CardDescription>Toggle between dark and light theme</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-3">
-            <span className="text-sm">{theme === 'dark' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}</span>
-            <Button variant="outline" onClick={toggle}>
-              Switch to {theme === 'dark' ? 'Light' : 'Dark'} Mode
-            </Button>
           </div>
         </CardContent>
       </Card>

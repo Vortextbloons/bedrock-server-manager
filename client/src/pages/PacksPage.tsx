@@ -183,48 +183,46 @@ export function PacksPage() {
         <p className="text-xs text-muted-foreground/60">.zip, .mcpack, .mcaddon</p>
       </div>
 
-      <Tabs defaultValue="behavior">
+      <Tabs defaultValue="installed">
         <TabsList>
-          <TabsTrigger value="behavior" className="gap-2">
-            <Package className="h-4 w-4" /> Behavior Packs
+          <TabsTrigger value="installed" className="gap-2">
+            <Package className="h-4 w-4" /> Installed
           </TabsTrigger>
-          <TabsTrigger value="resource" className="gap-2">
-            <Package className="h-4 w-4" /> Resource Packs
-          </TabsTrigger>
-          <TabsTrigger value="conflicts" className="gap-2">
-            <ShieldAlert className="h-4 w-4" /> Conflicts
-          </TabsTrigger>
-          <TabsTrigger value="dependencies" className="gap-2">
-            <AlertTriangle className="h-4 w-4" /> Dependencies
+          <TabsTrigger value="health" className="gap-2">
+            <ShieldAlert className="h-4 w-4" /> Health
           </TabsTrigger>
           <TabsTrigger value="worlds" className="gap-2">
             <Globe className="h-4 w-4" /> World Packs
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="behavior" className="mt-4">
-          <PackList
-            type="behavior"
-            packs={data?.behavior ?? []}
-            isLoading={isLoading}
-            running={running}
-          />
+        <TabsContent value="installed" className="mt-4 space-y-4">
+          <Tabs defaultValue="behavior">
+            <TabsList>
+              <TabsTrigger value="behavior">Behavior</TabsTrigger>
+              <TabsTrigger value="resource">Resource</TabsTrigger>
+            </TabsList>
+            <TabsContent value="behavior" className="mt-4">
+              <PackList
+                type="behavior"
+                packs={data?.behavior ?? []}
+                isLoading={isLoading}
+                running={running}
+              />
+            </TabsContent>
+            <TabsContent value="resource" className="mt-4">
+              <PackList
+                type="resource"
+                packs={data?.resource ?? []}
+                isLoading={isLoading}
+                running={running}
+              />
+            </TabsContent>
+          </Tabs>
         </TabsContent>
 
-        <TabsContent value="resource" className="mt-4">
-          <PackList
-            type="resource"
-            packs={data?.resource ?? []}
-            isLoading={isLoading}
-            running={running}
-          />
-        </TabsContent>
-
-        <TabsContent value="conflicts" className="mt-4">
+        <TabsContent value="health" className="mt-4 space-y-6">
           <ConflictsList />
-        </TabsContent>
-
-        <TabsContent value="dependencies" className="mt-4">
           <DepsList />
         </TabsContent>
 

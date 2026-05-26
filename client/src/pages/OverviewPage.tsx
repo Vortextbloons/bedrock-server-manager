@@ -37,8 +37,8 @@ export function OverviewPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-semibold text-primary">System Overview</h2>
-        <p className="text-sm text-muted-foreground">Bedrock Dedicated Server manager dashboard</p>
+        <h2 className="text-xl font-semibold text-primary">Dashboard</h2>
+        <p className="text-sm text-muted-foreground">Bedrock Dedicated Server manager at a glance</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -58,8 +58,8 @@ export function OverviewPage() {
             <p
               className={
                 validation?.valid
-                  ? 'text-sm text-green-400'
-                  : 'text-sm text-amber-300'
+                   ? 'text-sm text-green-400'
+                   : 'text-sm text-amber-300'
               }
             >
               {validation?.valid
