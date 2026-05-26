@@ -17,4 +17,4 @@ These endpoints are designed for convenience on a local network.
 
 ## Reporting a Vulnerability
 
-Please report security issues via [GitHub Issues](https://github.com/<your-username>/bedrock-server-manager/issues). There is no private reporting channel at this time.
+Please report security issues via [GitHub Issues](https://github.com/Vortexstbloons/bedrock-server-manager/issues). There is no private reporting channel at this time.

@@ -32,7 +32,7 @@ Manual-trigger Bedrock Dedicated Server manager with local web dashboard (Window
 
 ```powershell
 # Clone and install
-git clone https://github.com/<your-username>/bedrock-server-manager.git
+git clone https://github.com/Vortexstbloons/bedrock-server-manager.git
 cd bedrock-server-manager
 npm install
 

@@ -7,12 +7,12 @@
   "keywords": ["minecraft", "bedrock", "bds", "server-manager", "dashboard"],
   "repository": {
     "type": "git",
-    "url": "github.com/<your-username>/bedrock-server-manager"
+    "url": "github.com/Vortexstbloons/bedrock-server-manager"
   },
   "bugs": {
-    "url": "https://github.com/<your-username>/bedrock-server-manager/issues"
+    "url": "https://github.com/Vortexstbloons/bedrock-server-manager/issues"
   },
-  "homepage": "https://github.com/<your-username>/bedrock-server-manager",
+  "homepage": "https://github.com/Vortexstbloons/bedrock-server-manager",
   "engines": {
     "node": ">=20"
   },

@@ -19,7 +19,7 @@ Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) before making changes. It expl
 
 ## Reporting Issues
 
-Bug reports and feature requests are welcome via [GitHub Issues](https://github.com/<your-username>/bedrock-server-manager/issues).
+Bug reports and feature requests are welcome via [GitHub Issues](https://github.com/Vortexstbloons/bedrock-server-manager/issues).
 
 Please include:
 
